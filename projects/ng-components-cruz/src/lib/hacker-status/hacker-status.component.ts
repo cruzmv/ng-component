@@ -29,7 +29,7 @@ export class HackerStatusComponent implements OnInit {
       case 'warning':
         return 'yellow';
       default:
-        return 'green';
+        return 'yellow';
     }
   }
 

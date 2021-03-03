@@ -56,5 +56,13 @@ describe('NgComponentsCruzComponent', () => {
     expect(pulseEl.classList).toContain('red');
   })
 
+  it('Should set pulse color to yellow when input is "undefilned/null"',()=>{
+    testHost.appStatus = undefined;
+    fixture.detectChanges();
+    //expect(fixture).toMatchSnapShot();
+    const pulseEl: HTMLElement = fixture.debugElement.query(By.css('.pulse')).nativeElement;
+    expect(pulseEl.classList).toContain('yellow');
+  })
+
 
 });
