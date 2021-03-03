@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": false
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -119,6 +122,46 @@
             "production": {
               "devServerTarget": "ng-components:serve:production"
             }
+          }
+        }
+      }
+    },
+    "ng-components-cruz": {
+      "projectType": "library",
+      "root": "projects/ng-components-cruz",
+      "sourceRoot": "projects/ng-components-cruz/src",
+      "prefix": "vm",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "tsConfig": "projects/ng-components-cruz/tsconfig.lib.json",
+            "project": "projects/ng-components-cruz/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ng-components-cruz/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-components-cruz/src/test.ts",
+            "tsConfig": "projects/ng-components-cruz/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-components-cruz/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-components-cruz/tsconfig.lib.json",
+              "projects/ng-components-cruz/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
